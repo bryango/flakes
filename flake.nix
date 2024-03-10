@@ -1,8 +1,7 @@
 {
   description = ''
     Management of packages developed at home.
-    This flake is not in a git repository by design.
-    Alternatively one can put a secret GIT_DIR in e.g. `.envrc`.
+    This flake is in a secret git repository hidden from nix.
   '';
 
   inputs = {
@@ -22,8 +21,11 @@
 
   outputs = { self, nixpkgs, hydra-check, xinput-json, wifipem }:
     let
-      inherit (nixpkgs) lib;
+      /** the .git directory for this flake, hidden from nix */
+      gitDir = "../flakes.git";
       systems = [ "x86_64-linux" ];
+
+      inherit (nixpkgs) lib;
       forAllSystems = f: lib.genAttrs systems (system: f {
         inherit system;
         pkgs = nixpkgs.legacyPackages.${system};
@@ -32,9 +34,6 @@
     in
     {
       packages = forAllSystems ({ system, pkgs, final }: {
-        hydra-check = hydra-check.packages.${system}.default;
-        xinput-json = xinput-json.packages.${system}.default;
-        wifipem-live-capture = wifipem.packages.${system}.live-capture;
         default = pkgs.buildEnv {
           name = "home-apps";
           paths = lib.attrValues {
@@ -43,26 +42,28 @@
             inherit (final) wifipem-live-capture;
           };
         };
+
+        hydra-check = hydra-check.packages.${system}.default;
+        xinput-json = xinput-json.packages.${system}.default;
+        wifipem-live-capture = wifipem.packages.${system}.live-capture;
+
+        /** a special git with --git-dir=${gitDir} for this flake only */
+        git-special-dir = pkgs.callPackage
+          ({ symlinkJoin, makeBinaryWrapper, git }: symlinkJoin {
+            name = "git-special-dir";
+            paths = [ git ];
+            nativeBuildInputs = [ makeBinaryWrapper ];
+            postBuild = ''
+              wrapProgram $out/bin/git --add-flags "--git-dir=${gitDir}"
+            '';
+          })
+          { };
       });
 
-      devShells = forAllSystems ({ pkgs, ... }:
-        let
-          git = pkgs.callPackage
-            ({ symlinkJoin, makeBinaryWrapper, git }: symlinkJoin {
-              name = "git-special-dir";
-              paths = [ git ];
-              nativeBuildInputs = [ makeBinaryWrapper ];
-              postBuild = ''
-                wrapProgram $out/bin/git --add-flags "--git-dir=../flakes.git"
-              '';
-            })
-            { };
-        in
-        {
-          default = pkgs.mkShell {
-            packages = [ git ];
-          };
-        }
-      );
+      devShells = forAllSystems ({ pkgs, final, ... }: {
+        default = pkgs.mkShell {
+          packages = [ final.git-special-dir ];
+        };
+      });
     };
 }
