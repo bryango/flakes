@@ -28,7 +28,7 @@ This flake solves the problem by:
 I _do_ use home-manager but these are the temporary packages I specifically do _not_ want to keep track of.
 We are emulating the cursed `nix-env` functionality with `nix-channel`, where things are dirty yet efficient.
 
-## no submodules
+## no `.git`
 
 If nix handled submodules gracefully, there would be no need for this hack.
 However, nix does not, which means that this flake needs to:
@@ -41,3 +41,13 @@ We can then use a special `git` wrapped with the `--git-dir` flag to manage this
 This special `git` is defined in the `flake.nix` itself.
 Combined with the help of `.envrc` and `devShells`, this wrapped git can be presented to the user seamlessly,
 while keeping the git repository hidden from nix.
+
+## no `flake.lock`
+
+`flake.lock` is no checked into the repository, because it contains dynamically generated store paths
+in the form of
+```
+file:///nix/store/qpifqsm65cc86nn001nk860cjrgdk3mf-source/...
+```
+where the hash changes whenever the host repository changes. This is not useful at all.
+Relatedly, `.envrc` contains `nix_direnv_manual_reload` to avoid reloading all the time.
