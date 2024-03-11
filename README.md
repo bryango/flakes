@@ -7,6 +7,8 @@ This is for:
 - ... that I currently maintain and install
 - ... but do not want in my home-manager profile
 
+It basically reinvents the "dirtiness" of `nix-env` and `nix-channel` with flakes.
+
 Why? Here are some facts:
 - each project has to be in its own git repository
 - each package carries along its own dependencies, e.g. `nixpkgs`
@@ -24,8 +26,7 @@ This flake solves the problem by:
 ## no home-manager
 
 I _do_ use home-manager but these are the temporary packages I specifically do _not_ want to keep track of.
-Basically, we are emulating the cursed `nix-env` functionality with `nix-channel`, where things are dirty
-but somewhat efficient.
+We are emulating the cursed `nix-env` functionality with `nix-channel`, where things are dirty yet efficient.
 
 ## no submodules
 
