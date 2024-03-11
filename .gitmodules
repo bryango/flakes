@@ -1,0 +1,9 @@
+[submodule "hydra-check"]
+	path = hydra-check
+	url = git@github.com:bryango/hydra-check.git
+[submodule "wifipem"]
+	path = wifipem
+	url = git@github.com:bryango/wifipem.git
+[submodule "xinput-json"]
+	path = xinput-json
+	url = git@github.com:bryango/xinput-json.git
