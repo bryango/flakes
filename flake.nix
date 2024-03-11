@@ -1,9 +1,11 @@
 {
   description = ''
-    Management of packages developed at home.
+    Manage "dirty", unlocked flakes developed at home.
     This flake is in a secret git repository hidden from nix.
+    Specify the secret git directory with $gitDir below.
   '';
 
+  /** pull in "dirty" flakes here and redirect their dependencies */
   inputs = {
     hydra-check = {
       url = "./hydra-check";
@@ -36,6 +38,7 @@
       packages = forAllSystems ({ system, pkgs, final }: {
         default = pkgs.buildEnv {
           name = "home-apps";
+          /** toggle packages to link in the profile */
           paths = lib.attrValues {
             inherit (final) hydra-check;
             inherit (final) xinput-json;
@@ -43,6 +46,7 @@
           };
         };
 
+        # expose packages here
         hydra-check = hydra-check.packages.${system}.default;
         xinput-json = xinput-json.packages.${system}.default;
         wifipem-live-capture = wifipem.packages.${system}.live-capture;
@@ -62,7 +66,10 @@
 
       devShells = forAllSystems ({ pkgs, final, ... }: {
         default = pkgs.mkShell {
-          packages = [ final.git-special-dir ];
+          packages = with final; [
+            /** use the special git with `--git-dir=${gitDir}` */
+            git-special-dir
+          ];
         };
       });
     };
