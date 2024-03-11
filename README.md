@@ -3,7 +3,7 @@
 A hack to efficiently install the flakes maintained at my home.
 
 This is for:
-- "dirty" (local, unlocked, probably temporary) flakes and packages
+- "dirty" (local, unlocked, temporary) flakes and packages
 - ... that I currently maintain and install
 - ... but do not want in my home-manager profile
 
@@ -26,12 +26,13 @@ This flake solves the problem by:
 ## no home-manager
 
 I _do_ use home-manager but these are the temporary packages I specifically do _not_ want to keep track of.
-We are emulating the cursed `nix-env` functionality with `nix-channel`, where things are dirty yet efficient.
+We are emulating the cursed `nix-env` & `nix-channel` functionality, where things are dirty yet efficient.
 
 ## no `.git`
 
 If nix handled submodules gracefully, there would be no need for this hack.
 However, nix does not, which means that this flake needs to:
+
 - present itself as a `path` to nix, yet
 - be a secret git repository for efficient bookkeeping.
 
