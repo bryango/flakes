@@ -8,15 +8,15 @@
   /** pull in "dirty" flakes here and redirect their dependencies */
   inputs = {
     hydra-check = {
-      url = "./hydra-check";
+      url = "git+file:./hydra-check";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xinput-json = {
-      url = "./xinput-json";
+      url = "git+file:./xinput-json";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wifipem = {
-      url = "./wifipem";
+      url = "git+file:./wifipem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
