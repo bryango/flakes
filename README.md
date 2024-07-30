@@ -12,7 +12,8 @@ It basically reinvents the "dirtiness" of `nix-env` and `nix-channel` with flake
 Why? Here are some facts:
 - each project has to be in its own git repository
 - each package carries along its own dependencies, e.g. `nixpkgs`
-- nix is terrible with git submodules, at least for now
+- ~~nix is terrible with git submodules, at least for now~~<br>
+  (it seems that this is fixed as of nix v2.23.3)
 
 Without this hack, we have the following problems:
 - there will be N copies of deps, e.g. `nixpkgs` floating in my system
@@ -21,7 +22,8 @@ Without this hack, we have the following problems:
 This flake solves the problem by:
 - gathering all these packages into a single env so I can `nix profile install` all of them
 - redirecting common dependencies e.g. `nixpkgs` to the nix registry so I can `nix flake update` all of them
-- circumventing the submodule issues with a separate `--git-dir` at some other location; more on that later
+- circumventing the submodule issues with a separate `--git-dir` at some other location; more on that later<br>
+  (this may now be obsolete since nix v2.23.3)
 
 ## no home-manager
 
@@ -29,6 +31,8 @@ I _do_ use home-manager but these are the temporary packages I specifically do _
 We are emulating the cursed `nix-env` & `nix-channel` functionality, where things are dirty yet efficient.
 
 ## no `.git`
+
+**Update:** this may now be obsolete since nix v2.23.3.
 
 If nix handled submodules gracefully, there would be no need for this hack.
 However, nix does not, which means that this flake needs to:
