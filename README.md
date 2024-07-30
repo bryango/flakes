@@ -3,7 +3,7 @@
 A hack to efficiently install the flakes maintained at my home.
 
 This is for:
-- "dirty" (local, unlocked, temporary) flakes and packages
+- "dirty" (local, <!--unlocked,--> temporary) flakes and packages
 - ... that I currently maintain and install
 - ... but do not want in my home-manager profile
 
@@ -43,6 +43,8 @@ This special `git` is defined in the `flake.nix` itself.
 Combined with the help of `.envrc` and `devShells`, this wrapped git can be presented to the user seamlessly,
 while keeping the git repository hidden from nix.
 
+<!-- now trying to commit `flake.lock` so that we can use github actions to build it
+
 ## no `flake.lock`
 
 `flake.lock` is no checked into the repository, because it contains dynamically generated store paths
@@ -52,3 +54,4 @@ file:///nix/store/qpifqsm65cc86nn001nk860cjrgdk3mf-source/...
 ```
 where the hash changes whenever the host repository changes. This is not useful at all.
 Relatedly, `.envrc` contains `nix_direnv_manual_reload` to avoid reloading all the time.
+-->
