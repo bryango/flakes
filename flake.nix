@@ -14,14 +14,19 @@
     xinput-json = {
       url = "git+file:./xinput-json";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.fenix.follows = "fenix";
     };
     wifipem = {
       url = "git+file:./wifipem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    fenix = {
+      url = "fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, hydra-check, xinput-json, wifipem }:
+  outputs = { self, nixpkgs, hydra-check, xinput-json, wifipem, ... }:
     let
       /** the .git directory for this flake, hidden from nix */
       gitDir = "../flakes.git";
