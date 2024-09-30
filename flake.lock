@@ -122,11 +122,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1723703277,
-        "narHash": "sha256-nk0RaUB5f68BwtXAYy3WAjqFhVKqIl9Z89RGycTa2vk=",
+        "lastModified": 1727586919,
+        "narHash": "sha256-e/YXG0tO5GWHDS8QQauj8aj4HhXEm602q9swrrlTlKQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8b908192e64224420e2d59dfd9b2e4309e154c5d",
+        "rev": "2dcd9c55e8914017226f5948ac22c53872a13ee2",
         "type": "github"
       },
       "original": {
@@ -236,11 +236,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1708480249,
-        "narHash": "sha256-H6LpdVchLRVOYodUn1bxs8LZHDMpp2bGpQ3FIE7s/+0=",
+        "lastModified": 1727685143,
+        "narHash": "sha256-u3uvin0IQql9U+UZU3cZh9OH67yX2nTKF87GKUeq8G8=",
         "ref": "refs/heads/minimal",
-        "rev": "1d79d55caebf7b1a05153f317a01b346c10affd3",
-        "revCount": 37,
+        "rev": "011a23f7261f988a818894429b2a21e15e352e10",
+        "revCount": 38,
         "type": "git",
         "url": "file:./wifipem"
       },
