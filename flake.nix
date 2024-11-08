@@ -1,8 +1,6 @@
 {
   description = ''
     Manage "dirty", unlocked flakes developed at home.
-    This flake is in a secret git repository hidden from nix.
-    Specify the secret git directory with $gitDir below.
   '';
 
   /** pull in "dirty" flakes here and redirect their dependencies */
@@ -28,8 +26,6 @@
 
   outputs = { self, nixpkgs, hydra-check, xinput-json, wifipem, ... }:
     let
-      /** the .git directory for this flake, hidden from nix */
-      gitDir = "../flakes.git";
       systems = [ "x86_64-linux" ];
 
       inherit (nixpkgs) lib;
@@ -55,27 +51,6 @@
         hydra-check = hydra-check.packages.${system}.default;
         xinput-json = xinput-json.packages.${system}.default;
         wifipem-live-capture = wifipem.packages.${system}.live-capture;
-
-        /** a special git with --git-dir=${gitDir} for this flake only */
-        git-special-dir = pkgs.callPackage
-          ({ symlinkJoin, makeBinaryWrapper, git }: symlinkJoin {
-            name = "git-special-dir";
-            paths = [ git ];
-            nativeBuildInputs = [ makeBinaryWrapper ];
-            postBuild = ''
-              wrapProgram $out/bin/git --add-flags "--git-dir=${gitDir}"
-            '';
-          })
-          { };
-      });
-
-      devShells = forAllSystems ({ pkgs, final, ... }: {
-        default = pkgs.mkShell {
-          packages = with final; [
-            /** use the special git with `--git-dir=${gitDir}` */
-            git-special-dir
-          ];
-        };
       });
     };
 }
