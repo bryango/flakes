@@ -80,7 +80,6 @@
       "locked": {
         "lastModified": 1733047921,
         "narHash": "sha256-RCS3t8DhXAqoM60eqfGf+Cj6u4RjwpNaEbKHgFsD00A=",
-        "ref": "refs/heads/riir",
         "rev": "706a5571ad5de27f9ee322ede3b1309e2a3e0d43",
         "revCount": 85,
         "type": "git",
@@ -93,11 +92,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1732971106,
-        "narHash": "sha256-pHO+NWd8wJGDuVJjyyxdgtcmiGhNNKbIIXLMLBPxJTI=",
+        "lastModified": 1733152427,
+        "narHash": "sha256-2xVvZ6aodbs2vwZou/wChiTUANVFgDf6h65naWExcfs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f40efe1ce90f9cd692c8d56d9305fa6b9c07f211",
+        "rev": "e6944db042eb6a652debbff44dd41b44575ce1a8",
         "type": "github"
       },
       "original": {
