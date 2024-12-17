@@ -78,11 +78,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1734328596,
-        "narHash": "sha256-pUWy4QMBzD6WXK+Alwz2fRIP0iA++5fE4fdtz2apa2I=",
+        "lastModified": 1734421229,
+        "narHash": "sha256-QdCXToHNymOdlTyQjk9eo7LTznGKB+3pIOgjjaGoTXg=",
         "ref": "refs/heads/feature",
-        "rev": "9b2ee4af03b2ee38b7d9914f46576e3c8a80b68e",
-        "revCount": 87,
+        "rev": "2396224c5cda95e687325dcbc4ee41eb84511611",
+        "revCount": 90,
         "type": "git",
         "url": "file:./hydra-check"
       },
