@@ -51,9 +51,5 @@
         xinput-json = xinput-json.packages.${system}.default;
         wifipem-live-capture = wifipem.packages.${system}.live-capture;
       });
-
-      devShells = forAllSystems ({ system, pkgs, final, isLinux }: {
-        default = pkgs.mkShell {};
-      });
     };
 }
