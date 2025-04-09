@@ -27,34 +27,32 @@
 
   outputs = { self, nixpkgs, hydra-check, xinput-json, wifipem, ... }:
     let
-      systems = [ "x86_64-linux" ];
+      systems = [ "x86_64-linux" "aarch64-darwin" ];
 
       inherit (nixpkgs) lib;
       forAllSystems = f: lib.genAttrs systems (system: f {
         inherit system;
         pkgs = nixpkgs.legacyPackages.${system};
         final = self.packages.${system};
+        isLinux = lib.hasSuffix "linux" system;
       });
     in
     {
-      packages = forAllSystems ({ system, pkgs, final }: {
+      packages = forAllSystems ({ system, pkgs, final, isLinux }: {
         default = pkgs.buildEnv {
           name = "home-apps";
           /** toggle packages to link in the profile */
-          paths = lib.attrValues {
-            inherit (final) hydra-check;
-            inherit (final) xinput-json;
-            inherit (final) wifipem-live-capture;
-          };
+          paths = lib.attrValues (removeAttrs final [ "default" ]);
         };
 
         # expose packages here
         hydra-check = hydra-check.packages.${system}.default;
+      } // lib.optionalAttrs isLinux {
         xinput-json = xinput-json.packages.${system}.default;
         wifipem-live-capture = wifipem.packages.${system}.live-capture;
       });
 
-      devShells = forAllSystems ({ system, pkgs, final }: {
+      devShells = forAllSystems ({ system, pkgs, final, isLinux }: {
         default = pkgs.mkShell {};
       });
     };
