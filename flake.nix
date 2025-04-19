@@ -35,10 +35,11 @@
         pkgs = nixpkgs.legacyPackages.${system};
         final = self.packages.${system};
         isLinux = lib.hasSuffix "linux" system;
+        isDarwin = lib.hasSuffix "darwin" system;
       });
     in
     {
-      packages = forAllSystems ({ system, pkgs, final, isLinux }: {
+      packages = forAllSystems ({ system, pkgs, final, isLinux, isDarwin }: {
         default = pkgs.buildEnv {
           name = "home-apps";
           /** toggle packages to link in the profile */
@@ -50,6 +51,11 @@
       } // lib.optionalAttrs isLinux {
         xinput-json = xinput-json.packages.${system}.default;
         wifipem-live-capture = wifipem.packages.${system}.live-capture;
+      } // lib.optionalAttrs isDarwin {
+        darwin-apps = pkgs.buildEnv {
+          name = "darwin-apps";
+          paths = [ ./darwin/archive ];
+        };
       });
     };
 }

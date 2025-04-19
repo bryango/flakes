@@ -7,3 +7,6 @@
 [submodule "xinput-json"]
 	path = xinput-json
 	url = git@github.com:bryango/xinput-json.git
+[submodule "darwin/Ice"]
+	path = darwin/Ice
+	url = https://github.com/jordanbaird/Ice.git
