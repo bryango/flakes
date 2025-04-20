@@ -20,6 +20,15 @@ mkdir -p "$ARCHIVE_DIR"
   /bin/cp -acf ./DerivedData/Build/Products/Release/Ice.app ../"$ARCHIVE_DIR"
 )
 
+(
+  cd ./AltTab
+  xcodebuild -scheme Release -workspace alt-tab-macos.xcworkspace \
+    -derivedDataPath ./DerivedData \
+    CODE_SIGN_IDENTITY="Apple Development: bryanlai@foxmail.com (VY3W9R894Q)" \
+    MACOSX_DEPLOYMENT_TARGET=10.13
+  /bin/cp -acf ./DerivedData/Build/Products/Release/AltTab.app ../"$ARCHIVE_DIR"
+)
+
 store_path=$(nix store add --name "$PNAME" ./archive)
 
 # only update the store path .txt by hand or when necessary

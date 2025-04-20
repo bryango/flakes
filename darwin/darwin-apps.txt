@@ -1,1 +1,1 @@
-/nix/store/924jw3xyvsfdf9c14k6dzlc094r9bv4g-darwin-apps
+/nix/store/sp2bf4nqd6yz7kh33cwvzb4kih9kaqq1-darwin-apps

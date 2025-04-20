@@ -10,3 +10,6 @@
 [submodule "darwin/Ice"]
 	path = darwin/Ice
 	url = https://github.com/jordanbaird/Ice.git
+[submodule "darwin/AltTab"]
+	path = darwin/AltTab
+	url = https://github.com/lwouis/alt-tab-macos.git
