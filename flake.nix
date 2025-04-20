@@ -54,7 +54,18 @@
       } // lib.optionalAttrs isDarwin {
         darwin-apps = pkgs.buildEnv {
           name = "darwin-apps";
-          paths = [ ./darwin/archive ];
+          paths = [
+            (let
+              path = lib.strings.trim (builtins.readFile ./darwin/darwin-apps.txt);
+            in
+            builtins.fetchClosure {
+              fromStore = "https://chezbryan.cachix.org";
+              # it seems that cachix doesn't advertise ca-derivations;
+              # no worries, just treat them as input addressed:
+              toPath = path;
+              fromPath = path;
+            })
+          ];
         };
       });
     };
