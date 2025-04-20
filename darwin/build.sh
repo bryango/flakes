@@ -20,11 +20,15 @@ mkdir -p "$ARCHIVE_DIR"
   /bin/cp -acf ./DerivedData/Build/Products/Release/Ice.app ../"$ARCHIVE_DIR"
 )
 
+store_path=$(nix store add --name "$PNAME" ./archive)
+
 # only update the store path .txt by hand or when necessary
-if [[ "$USER" == bryan ]] || ! git ls-files --error-unmatch "$PNAME.txt"; then
-  nix store add --name "$PNAME" ./archive  > "$PNAME.txt"
+if [[ "$USER" == bryan ]]; then
+  echo "$store_path"  > "$PNAME.txt"
+elif ! git ls-files --error-unmatch "$PNAME.txt"; then
+  echo "$store_path"  > "$PNAME.txt"
   git add "$PNAME.txt"
-  cat "$PNAME.txt"
-else
-  nix store add --dry-run --name "$PNAME" ./archive
 fi
+
+cachix push chezbryan "$store_path"
+echo "$store_path"
