@@ -43,7 +43,9 @@
         default = pkgs.buildEnv {
           name = "home-apps";
           /** toggle packages to link in the profile */
-          paths = lib.attrValues (removeAttrs final [ "default" ]);
+          paths = lib.attrValues (removeAttrs final [
+            "default"
+          ]);
         };
 
         # expose packages here
@@ -51,22 +53,6 @@
       } // lib.optionalAttrs isLinux {
         xinput-json = xinput-json.packages.${system}.default;
         wifipem-live-capture = wifipem.packages.${system}.live-capture;
-      } // lib.optionalAttrs isDarwin {
-        darwin-apps = pkgs.buildEnv {
-          name = "darwin-apps";
-          paths = [
-            (let
-              path = lib.strings.trim (builtins.readFile ./darwin/darwin-apps.txt);
-            in
-            builtins.fetchClosure {
-              fromStore = "https://chezbryan.cachix.org";
-              # it seems that cachix doesn't advertise ca-derivations;
-              # no worries, just treat them as input addressed:
-              toPath = path;
-              fromPath = path;
-            })
-          ];
-        };
       });
     };
 }
