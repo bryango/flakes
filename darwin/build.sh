@@ -29,6 +29,14 @@ mkdir -p "$ARCHIVE_DIR"
   /bin/cp -acf ./DerivedData/Build/Products/Release/AltTab.app ../"$ARCHIVE_DIR"
 )
 
+(
+  cd ./MiddleClick
+  patch < ../MiddleClick-dev-team.patch
+  make
+  /bin/cp -acf ./build/MiddleClick.app ../"$ARCHIVE_DIR"
+  git restore Makefile
+)
+
 store_path=$(nix store add --name "$PNAME" ./archive)
 
 # only update the store path .txt by hand or when necessary

@@ -13,3 +13,6 @@
 [submodule "darwin/AltTab"]
 	path = darwin/AltTab
 	url = https://github.com/lwouis/alt-tab-macos.git
+[submodule "darwin/MiddleClick"]
+	path = darwin/MiddleClick
+	url = https://github.com/artginzburg/MiddleClick.git
