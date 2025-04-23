@@ -37,6 +37,14 @@ mkdir -p "$ARCHIVE_DIR"
   git restore Makefile
 )
 
+(
+  cd ./Rectangle
+  xcodebuild -scheme Rectangle -configuration Release \
+    -derivedDataPath ./DerivedData \
+    "$CODESIGNING"
+  /bin/cp -acf ./DerivedData/Build/Products/Release/Rectangle.app ../"$ARCHIVE_DIR"
+)
+
 store_path=$(nix store add --name "$PNAME" ./archive)
 
 # only update the store path .txt by hand or when necessary

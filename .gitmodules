@@ -16,3 +16,6 @@
 [submodule "darwin/MiddleClick"]
 	path = darwin/MiddleClick
 	url = https://github.com/artginzburg/MiddleClick.git
+[submodule "darwin/Rectangle"]
+	path = darwin/Rectangle
+	url = https://github.com/rxhanson/Rectangle.git
