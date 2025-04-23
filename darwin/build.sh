@@ -5,6 +5,7 @@
 CODESIGNING=DEVELOPMENT_TEAM=AWMJ8H4G7B
 ARCHIVE_DIR=archive/Applications
 PNAME=darwin-apps
+STORE_PATH_FILE="$PNAME.txt"
 
 set -euo pipefail
 set -x
@@ -45,15 +46,7 @@ mkdir -p "$ARCHIVE_DIR"
   /bin/cp -acf ./DerivedData/Build/Products/Release/Rectangle.app ../"$ARCHIVE_DIR"
 )
 
-store_path=$(nix store add --name "$PNAME" ./archive)
-
-# only update the store path .txt by hand or when necessary
-if [[ "$USER" == bryan ]]; then
-  echo "$store_path"  > "$PNAME.txt"
-elif ! git ls-files --error-unmatch "$PNAME.txt"; then
-  echo "$store_path"  > "$PNAME.txt"
-  git add "$PNAME.txt"
-fi
-
-cachix push chezbryan "$store_path"
-echo "$store_path"
+nix store add --name "$PNAME" ./archive > "$STORE_PATH_FILE"
+git add --intent-to-add "$STORE_PATH_FILE"
+cachix push chezbryan "$(cat "$STORE_PATH_FILE")"
+cat "$STORE_PATH_FILE"
