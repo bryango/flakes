@@ -23,11 +23,20 @@ mkdir -p "$ARCHIVE_DIR"
 
 (
   cd ./AltTab
+
+  # update version; see:
+  # - ./.github/workflows/ci_cd.yml
+  # - ./scripts/replace_environment_variables_in_app.sh
+  version=$(git describe --tags --match='v*' | sed 's/^v//')
+  sed -i '' -e "s/#VERSION#/$version/" Info.plist
+
   xcodebuild -scheme Release -workspace alt-tab-macos.xcworkspace \
     -derivedDataPath ./DerivedData \
     CODE_SIGN_IDENTITY="Apple Development: bryanlai@foxmail.com (VY3W9R894Q)" \
     MACOSX_DEPLOYMENT_TARGET=10.13
   /bin/cp -acf ./DerivedData/Build/Products/Release/AltTab.app ../"$ARCHIVE_DIR"
+
+  git restore Info.plist
 )
 
 (
