@@ -32,7 +32,9 @@ mkdir -p "$ARCHIVE_DIR"
   pod install
   xcodebuild -workspace automute.xcworkspace -scheme AutoMute -configuration Release \
     -derivedDataPath ./DerivedData \
-    -allowProvisioningUpdates
+    -allowProvisioningUpdates \
+    "$CODESIGNING" \
+    CODE_SIGN_IDENTITY="Apple Development"
   /bin/cp -acf ./DerivedData/Build/Products/Release/AutoMute.app ../"$ARCHIVE_DIR"
   git restore 'Pod*'
 )
