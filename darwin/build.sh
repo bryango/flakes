@@ -22,6 +22,24 @@ mkdir -p "$ARCHIVE_DIR"
 )
 
 (
+  if ! command -v pod &>/dev/null; then
+    echo "require cocoapods: brew install cocoapods"
+    exit 1
+  fi
+
+  cd ./automute
+  pod install
+  xcodebuild -workspace automute.xcworkspace -scheme AutoMute -configuration Release \
+    -derivedDataPath ./DerivedData \
+    -allowProvisioningUpdates \
+    CODE_SIGN_STYLE="Manual" \
+    CODE_SIGN_IDENTITY="Apple Development: bryanlai@foxmail.com (VY3W9R894Q)" \
+    PRODUCT_BUNDLE_IDENTIFIER="com.bryango.automute"
+  /bin/cp -acf ./DerivedData/Build/Products/Release/AutoMute.app ../"$ARCHIVE_DIR"
+  git restore 'Pod*'
+)
+
+(
   cd ./AltTab
 
   # update version; see:
