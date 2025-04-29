@@ -28,13 +28,11 @@ mkdir -p "$ARCHIVE_DIR"
   fi
 
   cd ./automute
+  patch < ../automute-signing.patch
   pod install
   xcodebuild -workspace automute.xcworkspace -scheme AutoMute -configuration Release \
     -derivedDataPath ./DerivedData \
-    -allowProvisioningUpdates \
-    CODE_SIGN_STYLE="Manual" \
-    CODE_SIGN_IDENTITY="Apple Development: bryanlai@foxmail.com (VY3W9R894Q)" \
-    PRODUCT_BUNDLE_IDENTIFIER="com.bryango.automute"
+    -allowProvisioningUpdates
   /bin/cp -acf ./DerivedData/Build/Products/Release/AutoMute.app ../"$ARCHIVE_DIR"
   git restore 'Pod*'
 )
