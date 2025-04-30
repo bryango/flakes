@@ -2,7 +2,7 @@
 # build script for mac apps
 # in this script we assume gnu cli utils
 
-CODESIGNING=DEVELOPMENT_TEAM=AWMJ8H4G7B
+SET_DEVELOPMENT_TEAM=DEVELOPMENT_TEAM=AWMJ8H4G7B
 ARCHIVE_DIR=archive/Applications
 PNAME=darwin-apps
 STORE_PATH_FILE="$PNAME.txt"
@@ -17,7 +17,7 @@ mkdir -p "$ARCHIVE_DIR"
   cd ./Ice
   xcodebuild -scheme Ice -configuration Release \
     -derivedDataPath ./DerivedData \
-    "$CODESIGNING"
+    "$SET_DEVELOPMENT_TEAM"
   /bin/cp -acf ./DerivedData/Build/Products/Release/Ice.app ../"$ARCHIVE_DIR"
 )
 
@@ -33,7 +33,7 @@ mkdir -p "$ARCHIVE_DIR"
   xcodebuild -workspace automute.xcworkspace -scheme AutoMute -configuration Release \
     -derivedDataPath ./DerivedData \
     -allowProvisioningUpdates \
-    "$CODESIGNING" \
+    "$SET_DEVELOPMENT_TEAM" \
     CODE_SIGN_IDENTITY="Apple Development"
   /bin/cp -acf ./DerivedData/Build/Products/Release/AutoMute.app ../"$ARCHIVE_DIR"
   git restore 'Pod*'
@@ -69,7 +69,7 @@ mkdir -p "$ARCHIVE_DIR"
   cd ./Rectangle
   xcodebuild -scheme Rectangle -configuration Release \
     -derivedDataPath ./DerivedData \
-    "$CODESIGNING"
+    "$SET_DEVELOPMENT_TEAM"
   /bin/cp -acf ./DerivedData/Build/Products/Release/Rectangle.app ../"$ARCHIVE_DIR"
 )
 
