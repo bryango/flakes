@@ -1,22 +1,20 @@
 diff --git a/AutoMute Helper/AutoMute_Helper.entitlements b/AutoMute Helper/AutoMute_Helper.entitlements
-index 3c4a765..311b32b 100644
+index 3c4a765..18aff0c 100644
 --- a/AutoMute Helper/AutoMute_Helper.entitlements	
 +++ b/AutoMute Helper/AutoMute_Helper.entitlements	
-@@ -3,11 +3,7 @@
- <plist version="1.0">
+@@ -4,10 +4,6 @@
  <dict>
  	<key>com.apple.security.app-sandbox</key>
--	<true/>
+ 	<true/>
 -	<key>com.apple.security.application-groups</key>
 -	<array>
 -		<string>group.26ZKW6U635.com.yonilevy.automute</string>
 -	</array>
-+	<false/>
  	<key>com.apple.security.files.user-selected.read-only</key>
  	<true/>
  </dict>
 diff --git a/automute.xcodeproj/project.pbxproj b/automute.xcodeproj/project.pbxproj
-index 4b7e0d2..e6d8afa 100644
+index 4b7e0d2..d89be01 100644
 --- a/automute.xcodeproj/project.pbxproj
 +++ b/automute.xcodeproj/project.pbxproj
 @@ -277,7 +277,7 @@
@@ -60,15 +58,6 @@ index 4b7e0d2..e6d8afa 100644
  				GCC_PREPROCESSOR_DEFINITIONS = (
  					"$(inherited)",
  					"COCOAPODS=1",
-@@ -556,7 +557,7 @@
- 				);
- 				MACOSX_DEPLOYMENT_TARGET = 10.13;
- 				MARKETING_VERSION = 1.10;
--				PRODUCT_BUNDLE_IDENTIFIER = com.yonilevy.mutejack;
-+				PRODUCT_BUNDLE_IDENTIFIER = com.bryango.automute;
- 				PRODUCT_NAME = "$(TARGET_NAME)";
- 			};
- 			name = Debug;
 @@ -571,7 +572,6 @@
  				CODE_SIGN_STYLE = Automatic;
  				COMBINE_HIDPI_IMAGES = YES;
@@ -77,15 +66,6 @@ index 4b7e0d2..e6d8afa 100644
  				GCC_PREPROCESSOR_DEFINITIONS = (
  					"$(inherited)",
  					"COCOAPODS=1",
-@@ -589,7 +589,7 @@
- 				);
- 				MACOSX_DEPLOYMENT_TARGET = 10.13;
- 				MARKETING_VERSION = 1.10;
--				PRODUCT_BUNDLE_IDENTIFIER = com.yonilevy.mutejack;
-+				PRODUCT_BUNDLE_IDENTIFIER = com.bryango.automute;
- 				PRODUCT_NAME = "$(TARGET_NAME)";
- 			};
- 			name = Release;
 @@ -602,7 +602,6 @@
  				CODE_SIGN_STYLE = Automatic;
  				COMBINE_HIDPI_IMAGES = YES;
@@ -94,15 +74,6 @@ index 4b7e0d2..e6d8afa 100644
  				HEADER_SEARCH_PATHS = "\"${SRCROOT}\"/common";
  				INFOPLIST_FILE = "AutoMute Helper/Info.plist";
  				LD_RUNPATH_SEARCH_PATHS = (
-@@ -611,7 +610,7 @@
- 				);
- 				MACOSX_DEPLOYMENT_TARGET = 10.13;
- 				MARKETING_VERSION = 1.2;
--				PRODUCT_BUNDLE_IDENTIFIER = "com.yonilevy.Mutejack-Helper";
-+				PRODUCT_BUNDLE_IDENTIFIER = "com.bryango.automute-helper";
- 				PRODUCT_NAME = "$(TARGET_NAME)";
- 				SKIP_INSTALL = YES;
- 			};
 @@ -625,7 +624,6 @@
  				CODE_SIGN_STYLE = Automatic;
  				COMBINE_HIDPI_IMAGES = YES;
@@ -111,15 +82,6 @@ index 4b7e0d2..e6d8afa 100644
  				HEADER_SEARCH_PATHS = "\"${SRCROOT}\"/common";
  				INFOPLIST_FILE = "AutoMute Helper/Info.plist";
  				LD_RUNPATH_SEARCH_PATHS = (
-@@ -634,7 +632,7 @@
- 				);
- 				MACOSX_DEPLOYMENT_TARGET = 10.13;
- 				MARKETING_VERSION = 1.2;
--				PRODUCT_BUNDLE_IDENTIFIER = "com.yonilevy.Mutejack-Helper";
-+				PRODUCT_BUNDLE_IDENTIFIER = "com.bryango.automute-helper";
- 				PRODUCT_NAME = "$(TARGET_NAME)";
- 				SKIP_INSTALL = YES;
- 			};
 diff --git a/automute.xcodeproj/xcshareddata/xcschemes/AutoMute.xcscheme b/automute.xcodeproj/xcshareddata/xcschemes/AutoMute.xcscheme
 index d00c7cf..37bed7a 100644
 --- a/automute.xcodeproj/xcshareddata/xcschemes/AutoMute.xcscheme
