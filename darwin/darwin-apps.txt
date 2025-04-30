@@ -1,1 +1,0 @@
-/nix/store/sp2bf4nqd6yz7kh33cwvzb4kih9kaqq1-darwin-apps

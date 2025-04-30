@@ -7,18 +7,3 @@
 [submodule "xinput-json"]
 	path = xinput-json
 	url = git@github.com:bryango/xinput-json.git
-[submodule "darwin/Ice"]
-	path = darwin/Ice
-	url = https://github.com/jordanbaird/Ice.git
-[submodule "darwin/AltTab"]
-	path = darwin/AltTab
-	url = https://github.com/lwouis/alt-tab-macos.git
-[submodule "darwin/MiddleClick"]
-	path = darwin/MiddleClick
-	url = https://github.com/artginzburg/MiddleClick.git
-[submodule "darwin/Rectangle"]
-	path = darwin/Rectangle
-	url = https://github.com/rxhanson/Rectangle.git
-[submodule "darwin/automute"]
-	path = darwin/automute
-	url = https://github.com/yonilevy/automute.git
