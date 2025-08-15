@@ -79,26 +79,22 @@
         ]
       },
       "locked": {
-        "lastModified": 1754379314,
-        "narHash": "sha256-Z3dSaeDvzHayjA6kHa3JPp0wJoAjyAPVS532llsijPU=",
-        "ref": "refs/heads/master",
-        "rev": "974c3841a3867f9ae6df8a04c4ea464c3550c195",
-        "revCount": 142,
-        "type": "git",
-        "url": "file:./hydra-check"
+        "path": "hydra-check",
+        "type": "path"
       },
       "original": {
-        "type": "git",
-        "url": "file:./hydra-check"
-      }
+        "path": "hydra-check",
+        "type": "path"
+      },
+      "parent": []
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1753750875,
-        "narHash": "sha256-J1P0aQymehe8AHsID9wwoMjbaYrIB2eH5HftoXhF9xk=",
+        "lastModified": 1754393734,
+        "narHash": "sha256-fbnmAwTQkuXHKBlcL5Nq1sMAzd3GFqCOQgEQw6Hy0Ak=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "871381d997e4a063f25a3994ce8a9ac595246610",
+        "rev": "a683adc19ff5228af548c6539dbc3440509bfed3",
         "type": "github"
       },
       "original": {
@@ -156,18 +152,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1727685143,
-        "narHash": "sha256-u3uvin0IQql9U+UZU3cZh9OH67yX2nTKF87GKUeq8G8=",
-        "ref": "refs/heads/minimal",
-        "rev": "011a23f7261f988a818894429b2a21e15e352e10",
-        "revCount": 38,
-        "type": "git",
-        "url": "file:./wifipem"
+        "path": "wifipem",
+        "type": "path"
       },
       "original": {
-        "type": "git",
-        "url": "file:./wifipem"
-      }
+        "path": "wifipem",
+        "type": "path"
+      },
+      "parent": []
     },
     "xinput-json": {
       "inputs": {
@@ -180,18 +172,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1734327960,
-        "narHash": "sha256-OBQRRXzceUDwNg2Bon/r/jFtxEaIJgfRe644qSvLXiw=",
-        "ref": "refs/heads/master",
-        "rev": "46787d04f87856ba7c34bc615d23ee267abea280",
-        "revCount": 48,
-        "type": "git",
-        "url": "file:./xinput-json"
+        "path": "xinput-json",
+        "type": "path"
       },
       "original": {
-        "type": "git",
-        "url": "file:./xinput-json"
-      }
+        "path": "xinput-json",
+        "type": "path"
+      },
+      "parent": []
     }
   },
   "root": "root",

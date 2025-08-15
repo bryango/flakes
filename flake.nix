@@ -5,17 +5,18 @@
 
   /** pull in "dirty" flakes here and redirect their dependencies */
   inputs = {
+    self.submodules = true;
     hydra-check = {
-      url = "git+file:./hydra-check";
+      url = ./hydra-check;
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xinput-json = {
-      url = "git+file:./xinput-json";
+      url = ./xinput-json;
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.fenix.follows = "fenix";
     };
     wifipem = {
-      url = "git+file:./wifipem";
+      url = ./wifipem;
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fenix = {
