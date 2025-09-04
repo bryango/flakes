@@ -1,3 +1,5 @@
+# must use https:// not ssh://
+# otherwise nix might not know how to fetch them
 [submodule "hydra-check"]
 	path = hydra-check
 	url = https://github.com/bryango/hydra-check.git
