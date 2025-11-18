@@ -104,11 +104,24 @@
         "type": "github"
       }
     },
+    "nixpkgs-track": {
+      "flake": false,
+      "locked": {
+        "path": "nixpkgs-track",
+        "type": "path"
+      },
+      "original": {
+        "path": "nixpkgs-track",
+        "type": "path"
+      },
+      "parent": []
+    },
     "root": {
       "inputs": {
         "fenix": "fenix",
         "hydra-check": "hydra-check",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-track": "nixpkgs-track",
         "wifipem": "wifipem",
         "xinput-json": "xinput-json"
       }

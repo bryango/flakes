@@ -9,3 +9,6 @@
 [submodule "xinput-json"]
 	path = xinput-json
 	url = https://github.com/bryango/xinput-json.git
+[submodule "nixpkgs-track"]
+	path = nixpkgs-track
+	url = https://github.com/bryango/nixpkgs-track.git
