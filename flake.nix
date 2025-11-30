@@ -10,6 +10,10 @@
       url = ./hydra-check;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    git-branchless = {
+      url = ./git-branchless;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs-track = {
       url = ./nixpkgs-track;
       flake = false; # custom packaging
@@ -30,7 +34,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = { self, nixpkgs, hydra-check, xinput-json, wifipem, nixpkgs-track, ... }:
+  outputs = { self, nixpkgs, hydra-check, xinput-json, wifipem, nixpkgs-track, git-branchless, ... }:
     let
       systems = [ "x86_64-linux" "aarch64-darwin" ];
 
@@ -55,6 +59,7 @@
 
         # expose packages here
         hydra-check = hydra-check.packages.${system}.default;
+        git-branchless = git-branchless.packages.${system}.default;
         nixpkgs-track = pkgs.nixpkgs-track.overrideAttrs ({ pname ? "", meta ? {}, ... }: {
           pname = "${pname}-dev";
           src = nixpkgs-track;

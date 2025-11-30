@@ -70,6 +70,22 @@
         "type": "github"
       }
     },
+    "git-branchless": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "path": "git-branchless",
+        "type": "path"
+      },
+      "original": {
+        "path": "git-branchless",
+        "type": "path"
+      },
+      "parent": []
+    },
     "hydra-check": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -90,11 +106,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1762361079,
-        "narHash": "sha256-lz718rr1BDpZBYk7+G8cE6wee3PiBUpn8aomG/vLLiY=",
+        "lastModified": 1764081664,
+        "narHash": "sha256-sUoHmPr/EwXzRMpv1u/kH+dXuvJEyyF2Q7muE+t0EU4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ffcdcf99d65c61956d882df249a9be53e5902ea5",
+        "rev": "dc205f7b4fdb04c8b7877b43edb7b73be7730081",
         "type": "github"
       },
       "original": {
@@ -119,6 +135,7 @@
     "root": {
       "inputs": {
         "fenix": "fenix",
+        "git-branchless": "git-branchless",
         "hydra-check": "hydra-check",
         "nixpkgs": "nixpkgs",
         "nixpkgs-track": "nixpkgs-track",

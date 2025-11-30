@@ -12,3 +12,6 @@
 [submodule "nixpkgs-track"]
 	path = nixpkgs-track
 	url = https://github.com/bryango/nixpkgs-track.git
+[submodule "git-branchless"]
+	path = git-branchless
+	url = https://github.com/bryango/git-branchless.git
